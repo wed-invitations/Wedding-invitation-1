@@ -182,9 +182,9 @@
     .hero h1 {
       font-family: "Cormorant Garamond", serif;
       font-weight: 400;
-      font-size: clamp(48px, 10vw, 94px);
+      font-size: clamp(38px, 10vw, 94px);
       line-height: 1.6;
-      margin: 28px 0 12px;
+      margin: 28px 0 -5px;
       color: var(--gold2)
     }
 
@@ -283,7 +283,7 @@
     }
 
     .section h2 {
-      font: 400 clamp(38px, 7vw, 58px)/1.05 "Cormorant Garamond", serif;
+      font: 400 clamp(44px, 7vw, 58px)/1.05 "Cormorant Garamond", serif;
       color: var(--gold2);
       margin: 16px 0
     }
@@ -296,7 +296,7 @@
 
     .quote {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(30px, 4vw, 27px) !important;
+      font-size: clamp(32px, 4vw, 27px) !important;
       color: var(--gold2) !important;
       line-height: 1.7 !important;
       margin: 25px auto;
@@ -353,7 +353,7 @@
 
     .event-time {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: .13em;
       margin-top: 8px
     }
@@ -562,7 +562,7 @@
         <div class="ornament">✦</div>
         <div class="eyebrow"></div>
         <h1>Sumaiya Fatima<br><span class="date-big">With</span><br>Arshad Khan</h1>
-        <p class="subtitle"><br></p>
+        <p class="subtitle", style="margin-top: 5%;">S/o<br>(Mrs. & Mr.Mohammed Sayeedullah khan)</p>
         <div class="ornament">✦</div>
         <div class="date-big">28 · 11 · 2026</div>
         <div class="small">Saturday </div>
@@ -579,6 +579,7 @@
         <div class="event-card">
           <div class="event-label">The special day</div>
           <h3>Sumaiya <span class="amp">&</span> Arshad</h3>
+          <p></p>
           <div class="event-date">Saturday, 28 November 2026</div>
           <div class="event-time">Nikah:7:30 PM</div>
           <div class="divider"></div>
@@ -599,7 +600,7 @@
     <section class="section venue fade">
       <div class="section-inner">
         <div class="section-kicker">We look forward to welcoming you</div>
-        <h2 style="font-size:50px ;">The Venue</h2>
+        <h2 style="font-size:54px ; margin-bottom: 20px;">The Venue</h2>
         <div class="venue-name">Fort Grand</div>
         <p style="margin-top:0% ;">Siddulagutta, Shamshabad<br>Hyderabad, Telangana</p>
         <a class="map-btn"
@@ -642,7 +643,20 @@
       }
     });
 
-    function openInvite() { intro.classList.add('hide'); document.body.style.overflow = 'auto' }
+    async function openInvite() {
+    intro.classList.add('hide');
+    document.body.style.overflow = 'auto';
+
+    try {
+        await bgMusic.play();
+        musicToggle.classList.add('playing');
+        musicToggle.setAttribute('aria-pressed', 'true');
+        musicToggle.setAttribute('aria-label', 'Pause background music');
+        musicLabel.textContent = 'Pause music';
+    } catch (err) {
+        console.log('Music playback could not start.');
+    }
+}
     document.getElementById('open').addEventListener('click', openInvite);
     document.getElementById('seal').addEventListener('click', openInvite);
     document.body.style.overflow = 'hidden';
